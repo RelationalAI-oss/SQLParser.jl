@@ -1,8 +1,8 @@
-module PGQueryTests
+module SQLParserTests
 
 using AbstractTrees
 using JSON
-using PGQuery
+using SQLParser
 using Test
 
 const DEFAULT_SHOW_JSON = false

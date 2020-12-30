@@ -1,4 +1,4 @@
-name = "PGQuery"
+name = "SQLParser"
 uuid = "7f052e32-0ea7-11e9-3eef-4d657cb60d2b"
 authors = ["Mohammad Dashti <mdashti@gmail.com>"]
 version = "0.1.0"

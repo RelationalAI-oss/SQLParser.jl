@@ -40,7 +40,7 @@ for enum_name in target_node_tag_enum_names
     tp_name_str = SubString(enum_name_str, 3)
     tp_name = Symbol(tp_name_str)
     try
-        tp = eval(Meta.parse("PGQuery.$tp_name"))
+        tp = eval(Meta.parse("SQLParser.$tp_name"))
         tp == Nothing && continue
         local printnode_body = quote
             hasfield($tp, :type) && $(enum_name != :T_Expr) && @assert x.type == $enum_name "x.type is $(x.type), but expected to be $($enum_name)"
@@ -96,7 +96,7 @@ function convert_to_node_type(::Val{T}) where T
     str_name = string(T)
     @assert startswith(str_name, "T_")
     type_name = SubString(str_name, 3)
-    return eval(Meta.parse("PGQuery.$type_name"))
+    return eval(Meta.parse("SQLParser.$type_name"))
 end
 
 function convert_to_node_type(::Val{T_List})
