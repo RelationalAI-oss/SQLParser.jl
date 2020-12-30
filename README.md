@@ -7,5 +7,5 @@ Julia module to parse and normalize SQL queries using the PostgreSQL query parse
  - Regenerate `AbstractTrees` extension via this command:
 
  ```
-julia --project=. -e "using SQLParser; SQLParser.generate_code_for_abstract_tree_interface()"
+julia --project=. ./src/abstract_trees_codegen.jl
  ```
