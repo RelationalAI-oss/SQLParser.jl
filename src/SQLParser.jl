@@ -27,6 +27,7 @@ include(joinpath(@__DIR__, "gen", "libpg_api.jl"))
 
 include(joinpath(@__DIR__, "gencode_ext.jl"))
 include(joinpath(@__DIR__, "abstract_trees.jl"))
+include(joinpath(@__DIR__, "abstract_trees_ext.jl"))
 include(joinpath(@__DIR__, "exceptions.jl"))
 
 function parse_query(query_str)
@@ -65,11 +66,11 @@ function parse_query_json(consumer::Function, query_str)
 end
 
 # export everything with "pg_query_" prefix
-foreach(names(@__MODULE__, all=true)) do s
-   if startswith(string(s), "pg_query_")
-       @eval export $s
-   end
-end
+# foreach(names(@__MODULE__, all=true)) do s
+#    if startswith(string(s), "pg_query_")
+#        @eval export $s
+#    end
+# end
 
 export SQLParserNoParseTreeException, SQLParserException, parse_query, parse_query_json
 
