@@ -9,10 +9,11 @@ const depsjl_path = joinpath(@__DIR__, "..", "deps", "deps.jl")
 if !isfile(depsjl_path)
     error("SQLParser was not build properly. Please run Pkg.build(\"SQLParser\").")
 end
+include(depsjl_path)
 
 # Module initialization function
 function __init__()
-    include(depsjl_path)
+    check_deps()
 end
 
 using CEnum
