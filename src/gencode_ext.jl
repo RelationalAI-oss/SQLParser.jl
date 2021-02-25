@@ -57,6 +57,7 @@ function convert_to_actual_value(x::Value)
 end
 
 function _convert_to_proper_node_type(node)
+    node == C_NULL && return nothing
     node_type_enum = unsafe_load(convert(Ptr{Node}, node)).type
     if node_type_enum in [T_Integer, T_Float, T_String, T_BitString, T_Null]
         unsafe_load(convert(Ptr{Value}, node))
@@ -74,6 +75,7 @@ function Base.iterate(lst::List, state=(1, C_NULL))
     (state_idx, state_ptr) = state
     state_idx > lst.length && return nothing
     currentNode = state_idx == 1 ? lst.head : state_ptr
+    currentNode == C_NULL && return nothing
     state_idx == lst.length && @assert currentNode == lst.tail "The last item should be equal to tail"
     currentListCell = unsafe_load(currentNode)
 

@@ -34,6 +34,7 @@ end
     try_query("SELECT 3.14")
     try_query("SELECT NULL")
     try_query("SELECT a, t.b from tbl t")
+    try_query("SELECT DISTINCT A, B from R")
     for imdb_job_qry in sql_files(joinpath(@__DIR__, "imdb_job"))
         println("query name: $imdb_job_qry")
         try_query(read(joinpath(@__DIR__, "imdb_job", imdb_job_qry), String))
